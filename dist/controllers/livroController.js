@@ -89,36 +89,48 @@ const researchId = (request, response) => __awaiter(void 0, void 0, void 0, func
 });
 exports.researchId = researchId;
 //********************************************************************************************* */
-const update = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+const update = async (request, response) => {
     const id = request.params.id;
-    const { title, autor, publish_yaer, genero } = request.body;
+    const { title, author, publish_year, genre } = request.body;
+
+    // Validação básica
+    if (!id || isNaN(Number(id))) {
+        return response.status(400).json({ error: "Invalid ID format" });
+    }
+
+    if (!title || !author || !publish_year || !genre) {
+        return response.status(400).json({ error: "Missing required fields" });
+    }
+
     try {
-        const result = yield prisma.livro.update({
-            where: {
-                id: Number(id)
-            },
+        const result = await prisma.livro.update({
+            where: { id: Number(id) },
             data: {
                 titulo: title,
-                autor: autor,
-                ano_publicacao: publish_yaer,
-                genero: genero
-            }
+                autor: author,
+                ano_publicacao: publish_year,
+                genero: genre,
+            },
         });
+
         console.log(result);
-        response.status(200).json(result);
-    }
-    catch (error) {
-        if (error instanceof client_1.Prisma.PrismaClientKnownRequestError) {
-            console.log(error.code);
-            response.status(409).json({
+        return response.status(200).json(result);
+    } catch (error) {
+        if (error instanceof Prisma.PrismaClientKnownRequestError) {
+            console.error(error.code);
+            return response.status(409).json({
                 error: {
                     message: TratamentoErros_1.ErrorRequest.errorRequest(error.code),
-                    field: error.meta
-                }
+                    field: error.meta || null,
+                },
             });
         }
+
+        console.error(error); // Log para depuração
+        return response.status(500).json({ error: "Internal server error" });
     }
-});
+};
+
 exports.update = update;
 //********************************************************************************************* */
 const delet = (request, response) => __awaiter(void 0, void 0, void 0, function* () {

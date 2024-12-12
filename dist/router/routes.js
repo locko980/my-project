@@ -8,4 +8,4 @@ router.get('/livro', livroController_1.researchAll);
 router.get('/livro/:titulo', livroController_1.researchId);
 router.put('/livro/:id', livroController_1.update);
 router.delete('/livro/:id', livroController_1.delet);
-exports.default = router;
+exports.default = router;  

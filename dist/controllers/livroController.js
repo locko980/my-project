@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.delet = exports.update = exports.researchId = exports.researchAll = exports.creat = void 0;
-// import {v4 as uuidv4 } from 'uuid'
+// import {v4 as uuidv4 } from 'uuid' 
 const client_1 = require("@prisma/client");
 const TratamentoErros_1 = require("../utils/TratamentoErros");
 const prisma = new client_1.PrismaClient();
@@ -146,4 +146,3 @@ const delet = (request, response) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.delet = delet;
-//********************************************************************************************* */

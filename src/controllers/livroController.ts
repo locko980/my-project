@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { Livro, livros } from '../models/livroModel'
-// import {v4 as uuidv4 } from 'uuid'
+// import {v4 as uuidv4 } from 'uuid' 
 import { Prisma, PrismaClient } from "@prisma/client"
 import { ErrorRequest } from "../utils/TratamentoErros"
 
@@ -22,7 +22,7 @@ export const creat = async (request: Request, response: Response) => {
         response.status(201).send({
             "message": "Metodo HTTP: método creat."
         })
-    }catch (error) {
+    }catch (error:any){
         if (error instanceof Prisma.PrismaClientKnownRequestError){
             console.log(error.code)
             response.status(409).json({
@@ -65,7 +65,7 @@ export const researchId = async (request: Request, response: Response) => {
         console.log(result)
         response.status(200).json(result)
     }
-    catch (error){
+    catch (error:any){
         if (error instanceof Prisma.PrismaClientKnownRequestError){
             console.log(error.code)
             response.status(409).json({
@@ -96,7 +96,7 @@ export const update = async (request: Request, response: Response) => {
         console.log(result)
         response.status(200).json(result)
     }
-    catch (error){
+    catch (error:any){
         if (error instanceof Prisma.PrismaClientKnownRequestError){
             console.log(error.code)
             response.status(409).json({
@@ -122,7 +122,7 @@ export const delet = async (request: Request, response: Response) => {
         response.status(200).json(result)
     }
 
-    catch (error){
+    catch (error:any){
         if (error instanceof Prisma.PrismaClientKnownRequestError){
             console.log(error.code)
             response.status(409).json({
@@ -134,4 +134,3 @@ export const delet = async (request: Request, response: Response) => {
         }
     }
 }
-//********************************************************************************************* */

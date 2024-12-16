@@ -1,13 +1,13 @@
-import {UUID} from "crypto";
+import { UUID } from "crypto"
 
 interface Livro {
-    id: string,
-    title: string,
-    autor: string,
-    publish_yaer: number,
-    genero: string,
+    id : string
+    titulo : string,
+    autor : string,
+    ano_publicacao : number,
+    genero : string
 }
 
-let livros: Livro [] = []
+let livros : Livro [] = []
 
 export {Livro, livros}

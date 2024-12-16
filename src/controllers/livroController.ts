@@ -1,13 +1,12 @@
 import { Request, Response } from "express"
 import { Livro, livros } from '../models/livroModel'
-// import {v4 as uuidv4 } from 'uuid' 
 import { Prisma, PrismaClient } from "@prisma/client"
 import { ErrorRequest } from "../utils/TratamentoErros"
 
 const prisma = new PrismaClient()
 
 //********************************************************************************************* */
-export const creat = async (request: Request, response: Response) => {
+export const create = async (request: Request, response: Response) => {
     const {title, autor, publish_yaer, genero} = request.body
     try{
         const result = await prisma.livro.create({
@@ -109,7 +108,7 @@ export const update = async (request: Request, response: Response) => {
     }
 }
 //********************************************************************************************* */
-export const delet = async (request: Request, response: Response) => {
+export const deleted = async (request: Request, response: Response) => {
     const id = request.params.id
     const {title, autor, publish_yaer, genero} = request.body
     try{

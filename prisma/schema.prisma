@@ -4,7 +4,7 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-generator client {
+generator livro {
   provider = "prisma-client-js"
 }
 
@@ -17,6 +17,6 @@ model Livro{
   id Int @id @default(autoincrement())
   titulo String @unique
   autor String 
-  ano_publicacao DateTime @unique
+  ano_publicacao String
   genero String
 }

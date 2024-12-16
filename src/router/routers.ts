@@ -1,12 +1,12 @@
-import { Router } from "express";
-import {creat, researchAll, researchId, update, delet} from "../controllers/livroController";
+import { Router } from 'express';
+import {create, researchId,researchAll,update,deleted } from '../controllers/livroController'
 
-const router = Router();
+const router = Router()
 
-router.post('/livro', creat)
-router.get('/livro', researchAll) 
-router.get('/livro/:titulo', researchId)
-router.put('/livro/:id', update)
-router.delete('/livro/:id', delet)
+router.post('/livro',create)
+router.get('/livro',researchAll)
+router.get('/livro/:titulo',researchId)
+router.put('/livro/:id',update)
+router.delete('/livro/:id',deleted)
 
 export default router
